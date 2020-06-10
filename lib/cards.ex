@@ -37,5 +37,19 @@ defmodule Cards do
     #method to use earlang code, remember that Elixir transpile to Earlang and it is compiled by BEAM virtual machine
     binary = :erlang.term_to_binary(deck)
     File.write(filename, binary)
+    # { status, binary } = File.read('my_deck_file') //pattern matching to assing values in case of read the file
+    # in this case binary variable has the binaries code from file
+    # we can execute :erlang.binary_to_term(binary) to get the deck_file text
+  end
+
+  def load(filename) do
+    { status, binary } = File.read(filename)
+
+    # in case the filename does not exist the status variable is going to be :error instead of :ok
+    # in Elixir we can do the following
+    case status do
+      :ok -> :erlang.binary_to_term(binary)
+      :error -> "That file does not exist"
+    end
   end
 end
