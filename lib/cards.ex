@@ -3,11 +3,19 @@ defmodule Cards do
     values = ["Ace", "Two", "Three", "Four", "Five"]
     suits = ["Spades", "Clubs", "Hearts", "Diamons"]
 
-    for suit <- suits do
+    cards = for suit <- suits do
       #return an array like map
       for value <- values do
         "#{value} of #{suit}"
       end
+    end
+
+    #flatten method from List module
+    List.flatten(cards)
+
+    #another way better option
+    for suit <- suits, value <- values do #double loop
+      "#{value} of #{suit}"
     end
   end
 
