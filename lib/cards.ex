@@ -63,4 +63,13 @@ defmodule Cards do
       {:error, _reason} -> "That file does not exist"
     end
   end
+
+  def create_hand(hand_size) do
+    # with |> operator the result of the functions is passed to the next ones
+    # for example, the deck returned of function create_deck is going to be passed automatically to function suffle
+    # shuffle is returning a suffle deck then this value is passed to deal method as well, but as the first argument
+    Cards.create_deck
+    |> Cards.shuffle
+    |> Cards.deal(hand_size)
+  end
 end
