@@ -29,7 +29,7 @@ defmodule Cards do
 
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size) 
-    # this method split is returning a Tuple {  *hand*, *deck* } in ruby it will be { hand: [], deck: [] }
+    # this method "split" is returning a Tuple {  *hand*, *deck* } in ruby it will be { hand: [], deck: [] }
     #returns a tuple, in ruby we call it Hash, but a tuple does not have a key name, just the values  
   end
 
