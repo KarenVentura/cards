@@ -52,4 +52,15 @@ defmodule Cards do
       :error -> "That file does not exist"
     end
   end
+
+  def load_pm(filename) do
+    # in this case we are using pattern matching to assign and compare at the same time
+    # case is reciving the statement and it should return 2 values
+    # in the second statement we are using pattern matching to assign values and comparing
+    # in case of reason variable, we are not using that varible then elixir throw a warning but with _ we said it isn't going to be used
+    case File.read(filename) do
+      {:ok, binary} -> :erlang.binary_to_term(binary)
+      {:error, _reason} -> "That file does not exist"
+    end
+  end
 end
