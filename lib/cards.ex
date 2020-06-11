@@ -102,4 +102,22 @@ defmodule Cards do
     |> Cards.shuffle
     |> Cards.deal(hand_size)
   end
+
+  def map_data_structure do
+    # a map in elixir is the same as a hash in ruby
+    colors = %{primary: "red", secondary: "blue"}
+    # it works well with pattern matching
+    %{secondary: secondary_color_var} = colors # it getting the secondary value of the map
+    # to update a map ->
+    Map.put(colors, :primary, "replaced") # but this not update the map, returns a new one
+  end
+
+  def list_data_structure do
+    colors = [{:primary, "red"}, {:secondary, "green "}]
+    # adding a touple but when renders colors it shows a map inside
+    # [pirmary: "red", secondary: "green"]
+    # colors[:primary] iex= "red"
+    # also in list we can have repited keys colors = [primary: "red", primary: "red"]
+    # a usecase will be with ecto in where statement User.find_where([where: user.age >10, where: user.name == ""])
+  end
 end
